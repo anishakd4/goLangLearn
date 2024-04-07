@@ -77,8 +77,30 @@ Sender rateLimit: %v
 `, s.name, s.number, s.rateLimit)
 }
 
+//STRUCT METHODS IN GO
+//While Go is not object-oriented, it does support methods that can be defined on structs. Methods are just 
+//functions that have a receiver. A receiver is a special parameter that syntactically goes before the name of the function.
+type rect struct {
+	width int
+	height int
+}
+
+// area has a receiver of (r rect)
+func (r rect) area() int {
+	return r.width * r.height
+}
+
+func getAreaRect(){
+	var r = rect{
+		width: 5,
+		height: 10,
+	}
+
+	fmt.Println(r.area())
+}
 
 func main() {
+
 	setCar()
 	x := canSendMessage(messageToSend{
 		message:   "you have an birthday tomorrow",
@@ -87,6 +109,7 @@ func main() {
 	})
 	fmt.Println(x)
 
+	//Unlike nested structs, an embedded struct's fields are accessed at the top level like normal fields.
 	output := getSenderLog(sender{
 		rateLimit: 45,
 		user1: user1{
@@ -95,4 +118,7 @@ func main() {
 		},
 	})
 	fmt.Printf(output)
+
+	getAreaRect()
+
 }
