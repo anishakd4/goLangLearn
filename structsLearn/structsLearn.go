@@ -80,6 +80,8 @@ Sender rateLimit: %v
 //STRUCT METHODS IN GO
 //While Go is not object-oriented, it does support methods that can be defined on structs. Methods are just 
 //functions that have a receiver. A receiver is a special parameter that syntactically goes before the name of the function.
+//A receiver is just a special kind of function parameter. Receivers are important because they will, as you'll 
+//learn in the exercises to come, allow us to define interfaces that our structs (and other types) can implement.
 type rect struct {
 	width int
 	height int
