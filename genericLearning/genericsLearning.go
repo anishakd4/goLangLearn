@@ -165,8 +165,131 @@ func testChargeForLineItem(){
 	fmt.Println("######testChargeForLineItem######")
 }
 
+/*
+INTERFACE TYPE LISTS
+When generics were released, a new way of writing interfaces was also released at the same time!
+
+We can now simply list a bunch of types to get a new interface/constraint.
+
+// Ordered is a type constraint that matches any ordered type.
+// An ordered type is one that supports the <, <=, >, and >= operators.
+type Ordered interface {
+    ~int | ~int8 | ~int16 | ~int32 | ~int64 |
+        ~uint | ~uint8 | ~uint16 | ~uint32 | ~uint64 | ~uintptr |
+        ~float32 | ~float64 |
+        ~string
+}
+
+*/
+
+/*
+PARAMETRIC CONSTRAINTS
+
+Your interface definitions, which can later be used as constraints, can accept type parameters as well.
+
+*/
+
+type store[P product] interface{
+	Sell(P)
+}
+
+type product interface{
+	Price() float64
+	Name() string
+}
+
+type book struct{
+	title  string
+	author string
+	price  float64
+}
+
+func (b book) Price() float64 {
+	return b.price
+}
+
+func (b book) Name() string {
+	return fmt.Sprintf("%s by %s", b.title, b.author)
+}
+
+type toy struct {
+	name  string
+	price float64
+}
+
+func (t toy) Price() float64 {
+	return t.price
+}
+
+func (t toy) Name() string {
+	return t.name
+}
+
+type bookStore struct {
+	booksSold []book
+}
+
+func (bs *bookStore) Sell(b book) {
+	bs.booksSold = append(bs.booksSold, b)
+}
+
+type toyStore struct {
+	toysSold []toy
+}
+
+func (ts *toyStore) Sell(t toy) {
+	ts.toysSold = append(ts.toysSold, t)
+}
+
+func sellProducts[P product](s store[P], products []P) {
+	for _, p := range products {
+		s.Sell(p)
+	}
+}
+
+func testSellProducts() {
+	fmt.Println("######testSellProducts######")
+	bs := bookStore{
+		booksSold: []book{},
+	}
+
+    // By passing in "book" as a type parameter, we can use the sellProducts function to sell books in a bookStore
+	sellProducts[book](&bs, []book{
+		{
+			title:  "The Hobbit",
+			author: "J.R.R. Tolkien",
+			price:  10.0,
+		},
+		{
+			title:  "The Lord of the Rings",
+			author: "J.R.R. Tolkien",
+			price:  20.0,
+		},
+	})
+	fmt.Println(bs.booksSold)
+
+    // We can then do the same for toys
+	ts := toyStore{
+		toysSold: []toy{},
+	}
+	sellProducts[toy](&ts, []toy{
+		{
+			name:  "Lego",
+			price: 10.0,
+		},
+		{
+			name:  "Barbie",
+			price: 20.0,
+		},
+	})
+	fmt.Println(ts.toysSold)
+	fmt.Println("######testSellProducts######")
+}
+
 func main() {
 	printGetLast()
 
 	testChargeForLineItem()
+
+	testSellProducts()
 }
