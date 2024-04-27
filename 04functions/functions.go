@@ -23,11 +23,12 @@ func passingByValue(){
 	fmt.Println(sendsSoFar)
 }
 
-//A function can return a value that the caller doesn't care about. We can explicitly ignore variables by using an underscore: _
-//The Go compiler will throw an error if you have any unused variable declarations in your code, 
-//so you need to ignore anything you don't intend to use.
-// underscore is not a conventional name we ignore. Compiler completely removes it from the code
-
+/*
+Go supports the ability to return early from a function. This is a powerful feature that can clean up code, especially 
+when used as guard clauses.
+Guard Clauses leverage the ability to return early from a function (or continue through a loop) to make nested conditionals one-dimensional. 
+Instead of using if/else chains, we just return early from the function at the end of each conditional block.
+*/
 func getProductInfo(tier string) (string, string, string) {
 	if tier == "basic" {
 		return "1,000 texts per month", "$30 per month", "most popular"
@@ -40,6 +41,12 @@ func getProductInfo(tier string) (string, string, string) {
 	}
 }
 
+/*
+A function can return a value that the caller doesn't care about. We can explicitly ignore variables by using an underscore: _
+The Go compiler will throw an error if you have any unused variable declarations in your code, 
+so you need to ignore anything you don't intend to use.
+underscore is not a conventional name we ignore. Compiler completely removes it from the code
+*/
 func getProductMessage(tier string) string {
 	quantityMsg, priceMsg, _ := getProductInfo(tier)
 	return "You get " + quantityMsg + " for " + priceMsg + "."
@@ -63,12 +70,6 @@ func getCoords2() (x, y int){
 func getCoords3() (x, y int){
 	return 5, 6 // this is explicit, x and y are NOT returned
 }
-
-//Go supports the ability to return early from a function. This is a powerful feature that can clean up code, especially when used as guard clauses.
-//Guard Clauses leverage the ability to return early from a function (or continue through a loop) to make nested conditionals one-dimensional. 
-// Instead of using if/else chains, we just return early from the function at the end of each conditional block.
-
-//EARLY RETURNS
 
 func main() {
     test("Lane,", " happy birthday!")
