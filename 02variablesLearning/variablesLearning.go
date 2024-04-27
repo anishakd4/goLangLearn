@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"reflect"
+)
 
 /*
 
@@ -24,7 +27,7 @@ generally speaking numbers fall into 4 different buckets.
 
 We have integers, unsigned integers, floats and complex numbers.
 
-uint8 and uint16 both represent unsigned integers but uint16 has twice as many room for data within it. uint16 has 16 bits whereas uint8 has
+uint8 and uint16 both represent unsigned integers but uint16 has twice as much room for data within it. uint16 has 16 bits whereas uint8 has
 only 8 bits
 */
 
@@ -86,6 +89,7 @@ TYPE INFERENCE
 func typeInference(){
 	x := 56.0
 	fmt.Printf("type inference is %T\n", x)
+	fmt.Println(reflect.TypeOf(x))
 }
 
 /*
