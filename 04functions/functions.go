@@ -2,8 +2,18 @@ package functions
 
 import "fmt"
 
+//Functions in Go can take zero or more arguments
 func concat(s1 string, s2 string) string {
 	return s1 + s2
+}
+
+func test(s1 string, s2 string) {
+	fmt.Println(concat(s1, s2))
+}
+
+func incrementSends(sendsSoFar, sendsToAdd int) int{
+	sendsSoFar += sendsToAdd
+	return sendsSoFar
 }
 
 func passingByValue(){
@@ -17,6 +27,19 @@ func passingByValue(){
 //The Go compiler will throw an error if you have any unused variable declarations in your code, 
 //so you need to ignore anything you don't intend to use.
 // underscore is not a conventional name we ignore. Compiler completely removes it from the code
+
+func getProductInfo(tier string) (string, string, string) {
+	if tier == "basic" {
+		return "1,000 texts per month", "$30 per month", "most popular"
+	} else if tier == "premium" {
+		return "50,000 texts per month", "$60 per month", "best value"
+	} else if tier == "enterprise" {
+		return "unlimited texts per month", "$100 per month", "customizable"
+	} else {
+		return "", "", ""
+	}
+}
+
 func getProductMessage(tier string) string {
 	quantityMsg, priceMsg, _ := getProductInfo(tier)
 	return "You get " + quantityMsg + " for " + priceMsg + "."
@@ -47,7 +70,6 @@ func getCoords3() (x, y int){
 
 //EARLY RETURNS
 
-
 func main() {
     test("Lane,", " happy birthday!")
 	passingByValue()
@@ -55,25 +77,4 @@ func main() {
 	getCoords()
 	getCoords2()
 	getCoords3()
-}
-
-func incrementSends(sendsSoFar, sendsToAdd int) int{
-	sendsSoFar += sendsToAdd
-	return sendsSoFar
-}
-
-func test(s1 string, s2 string) {
-	fmt.Println(concat(s1, s2))
-}
-
-func getProductInfo(tier string) (string, string, string) {
-	if tier == "basic" {
-		return "1,000 texts per month", "$30 per month", "most popular"
-	} else if tier == "premium" {
-		return "50,000 texts per month", "$60 per month", "best value"
-	} else if tier == "enterprise" {
-		return "unlimited texts per month", "$100 per month", "customizable"
-	} else {
-		return "", "", ""
-	}
 }
