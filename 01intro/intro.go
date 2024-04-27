@@ -4,7 +4,7 @@ import "fmt"
 
 /*
 Every file of a go program has a package declaration at the top
-Here we have a package main simple because this program builds into a executable go program meaning we can this code as a stand-alone.
+Here we have a package main simple because this program builds into a executable go program meaning we can run this code as a stand-alone.
 */
 
 /*
@@ -48,8 +48,8 @@ takes care of allocating and de-allocating all the memory we use.This create a o
 memory than Rust or C program.
 
 GO is in a interesting sort of in-between world where go is a garbage collected language like java so it has a automated memory management,
-but it doesn't really have any JVM. GO executable does runs in a JVM like environment, just like Rust and C we get 1 binary. The difference
-is that go includes a runtime within very single binary built is go programming language. We can think of it as kind of like a sidecar that is
+but it doesn't really have any JVM. GO executable runs, just like Rust and C we get 1 binary. The difference
+is that go includes a runtime within every single binary built is go programming language. We can think of it as kind of like a sidecar that is
 compiled alongside your code. So your code has this a little of extra code that is added to it and that bit of code is what handles garbage 
 collection and automated memory management. So its a little bit more bloaty than Rust and C but it is not nearly as expensive in terms of 
 memory overhead as a language like java or C-Sharp.
