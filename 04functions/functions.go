@@ -35,6 +35,7 @@ func incrementSends(sendsSoFar, sendsToAdd int) int{
 	return sendsSoFar
 }
 
+//in go variables are passed by value not by reference
 func passingByValue(){
 	sendsSoFar := 430
 	const sendsToAdd = 25
@@ -71,9 +72,25 @@ func getProductMessage(tier string) string {
 	return "You get " + quantityMsg + " for " + priceMsg + "."
 }
 
-//NAMED RETURN VALUES
+/*
+NAMED RETURN VALUES
 func getCoords() (x, y int){
-	// x and y are initialized with zero values
+  // x and y are initialized with zero values
+
+  return // automatically returns x and y
+}
+Copy icon
+Is the same as:
+
+func getCoords() (int, int){
+	var x int
+	var y int
+	return x, y
+}
+*/
+
+func getCoords() (x, y int){
+	//by naming x and y are initialized with zero values
 	x = x * 5
 	y = y * 8
 	return // automatically returns x and y
