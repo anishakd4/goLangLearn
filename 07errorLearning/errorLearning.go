@@ -38,8 +38,10 @@ func printSMSCost(msgToCustomer, msgToSpouse string){
 	fmt.Println(ans)
 }
 
-//FORMATTING STRINGS REVIEW
-//A convenient way to format strings in Go is by using the standard library's fmt.Sprintf() function. 
+/*
+FORMATTING STRINGS REVIEW
+A convenient way to format strings in Go is by using the standard library's fmt.Sprintf() function. 
+*/
 func getSMSErrorString(cost float64, recipient string) string {
 	return fmt.Sprintf("SMS that costs %.2f to be sent to '%v'can not be sent", cost, recipient)
 }
