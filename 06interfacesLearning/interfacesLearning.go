@@ -44,6 +44,31 @@ func sendMessage(msg message){
 	x:= msg.getMessage()
 	fmt.Println(x)
 }
+/*
+MULTIPLE INTERFACES
+A type can implement any number of interfaces in Go. For example, the empty interface, interface{}, is always implemented by every 
+type because it has no requirements.
+func (e email) cost() int {
+	// ?
+}
+
+func (e email) format() string {
+	// ?
+}
+
+type expense interface {
+	cost() int
+}
+
+type formatter interface {
+	format() string
+}
+
+type email struct {
+	isSubscribed bool
+	body         string
+}
+*/
 
 /*
 NAME YOUR INTERFACE ARGUMENTS
