@@ -24,11 +24,6 @@ func sendSMSToCouple(msgToCustomer, msgToSpouse string) (int, error) {
 	return costForCustomer + costForSpouse, nil
 }
 
-func printSMSCost(msgToCustomer, msgToSpouse string){
-	ans, _ := sendSMSToCouple(msgToCustomer, msgToSpouse)
-	fmt.Println(ans)
-}
-
 func sendSMS(message string) (int, error) {
 	const maxTextLen = 25
 	const costPerChar = 2
@@ -36,6 +31,11 @@ func sendSMS(message string) (int, error) {
 		return 0, fmt.Errorf("can't send texts over %v characters", maxTextLen)
 	}
 	return costPerChar * len(message), nil
+}
+
+func printSMSCost(msgToCustomer, msgToSpouse string){
+	ans, _ := sendSMSToCouple(msgToCustomer, msgToSpouse)
+	fmt.Println(ans)
 }
 
 //FORMATTING STRINGS REVIEW
@@ -48,8 +48,11 @@ func printSMSErrorString(cost float64, recipient string){
 	fmt.Println(getSMSErrorString(cost, recipient))
 }
 
-//THE ERROR INTERFACE
-//Because errors are just interfaces, you can build your own custom types that implement the error interface.
+/*
+THE ERROR INTERFACE
+Because errors are just interfaces, you can build your own custom types that implement the error interface.
+*/
+
 type divideError struct {
 	dividend float64
 }
