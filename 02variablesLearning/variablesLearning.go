@@ -159,6 +159,16 @@ That said, you cannot declare a constant that can only be computed at run-time l
 const currentTime = time.Now()
 */
 
+func constantVariable() {
+	const premiumPlanName = "premium"
+	const basicPlanName = "basic"
+
+	//premiumPlanName = "Sdfsdf" //const variable can not be re-assigned. //cannot assign to premiumPlanName (neither addressable nor a map index expression)
+
+	fmt.Println(premiumPlanName)
+	fmt.Println(basicPlanName)
+}
+
 /*
 FORMATTING STRINGS IN GO
 
@@ -196,10 +206,21 @@ s := fmt.Sprintf("I am %.2f years old", 10.523)
 
 */
 
+func formattingString(){
+	const name = "anish"
+	const openrate = 3.4
+
+	msg := fmt.Sprintf("%s %.1f", name, openrate)
+
+	fmt.Println(msg)
+}
+
 func main() {
 	variableDeclaration()
 	shortVariableDeclaration()
 	typeInference()
 	sameLineDeclarations()
 	typeConversion()
+	constantVariable()
+	formattingString()
 }
