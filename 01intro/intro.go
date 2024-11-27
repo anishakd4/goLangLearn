@@ -43,16 +43,11 @@ is how bloaty program is, how much data it has to store in memory to be able to 
 In programming languages like Rust, C memory management is effectively manual.
 
 Java is a garbage collected language which essentially means memory management is automated, and in JAVA is done by java virtual machine.
-Every time we run a java program, we ae actually creating a mini virtual machine that your java byte code runs within and JVM is what 
+Every time we run a java program, we are actually creating a mini virtual machine that your java byte code runs within and JVM is what 
 takes care of allocating and de-allocating all the memory we use.This create a overhead meaning java programs use quite a bit of more 
 memory than Rust or C program.
 
-GO is in a interesting sort of in-between world where go is a garbage collected language like java so it has a automated memory management,
-but it doesn't really have any JVM. GO executable runs, just like Rust and C we get 1 binary. The difference
-is that go includes a runtime within every single binary built is go programming language. We can think of it as kind of like a sidecar that is
-compiled alongside your code. So your code has this a little of extra code that is added to it and that bit of code is what handles garbage 
-collection and automated memory management. So its a little bit more bloaty than Rust and C but it is not nearly as expensive in terms of 
-memory overhead as a language like java or C-Sharp.
+GO is in a interesting sort of in-between world where go is a garbage collected language like java so it has a automated memory management, but it doesn't really have any JVM. GO executable runs, just like Rust and C we get 1 binary. The difference is that go includes a runtime within every single binary built in go programming language. We can think of it as kind of like a sidecar that is compiled alongside your code. So your code has this a little of extra code that is added to it and that little code is what handles garbage collection and automated memory management. So its a little bit more bloaty than Rust and C but it is not nearly as expensive in terms of memory overhead as a language like java or C-Sharp.
 
 GO PROGRAMS ARE EASY ON MEMORY
 Go programs are fairly lightweight. Each program includes a small amount of "extra" code that's included in the executable binary. 
