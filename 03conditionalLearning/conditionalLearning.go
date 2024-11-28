@@ -46,7 +46,7 @@ if length := getLength(email); length < 1 {
 }
 
 Not only is this code a bit shorter, but it also removes length from the parent scope, which is convenient because we don't need it 
-there - we only need access to it while checking a condition.
+there - we only need access to it while checking a condition. So now length variable is accessible only in the if block.
 */
 
 
