@@ -89,6 +89,8 @@ func getCoords() (int, int){
 	var y int
 	return x, y
 }
+
+Named return values are mostly used if we have multiple return values from the same function and we want to document the return values.
 */
 
 func getCoords() (x, y int){
