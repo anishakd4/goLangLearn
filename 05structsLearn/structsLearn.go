@@ -90,6 +90,34 @@ If a struct is only meant to be used once, then it makes sense to declare it in 
 tempted to accidentally use it again.
 */
 
+type car2 struct {
+	maker bool
+	model string
+	doors int
+	mileage int
+	mecar struct{
+		makerr int
+		modell int
+	}
+}
+
+func anonymousStruct(){
+	myCar := struct {
+		maker string
+		model string
+	} {
+		maker: "tesla",
+		model: "model 3",
+	}
+
+	fmt.Println(myCar.maker)
+	fmt.Println(myCar.model)
+
+	myCar2 := car2{}
+	fmt.Println(myCar2.maker)
+	fmt.Println(myCar2.mecar.makerr)
+}
+
 /*
 Go is not an object-oriented language. However, embedded structs provide a kind of data-only inheritance that can be 
 useful at times. Keep in mind, Go doesn't support classes or inheritance in the complete sense, 
@@ -166,6 +194,10 @@ func main() {
 		recipient: user{name: "Jim Bond"},
 	})
 	fmt.Println(x)
+
+	fmt.Println("----anonymousStruct----")
+	anonymousStruct()
+	fmt.Println("----anonymousStruct----")
 
 	//Unlike nested structs, an embedded struct's fields are accessed at the top level like normal fields.
 	output := getSenderLog(sender{
