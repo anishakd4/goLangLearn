@@ -139,6 +139,8 @@ fmt.Println(lanesTruck.bedSize)
 fmt.Println(lanesTruck.maker)
 fmt.Println(lanesTruck.model)
 */
+
+
 type sender struct {
 	rateLimit int
 	user1
