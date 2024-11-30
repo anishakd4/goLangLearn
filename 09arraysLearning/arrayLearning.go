@@ -208,6 +208,7 @@ func printBadWordsIndex(msg []string, badWords []string) {
 
 func main() {
 	printMessageWithRetries("Anish", "Kumar", "Dubey")
+	
 	printSlices()
 
 	printMessageCosts([]string{"Welcome to the movies!", "Enjoy your popcorn!"})
