@@ -66,6 +66,7 @@ Generally speaking, unless you're hyper-optimizing the memory usage of your prog
 
 /*
 when we want to grow a slice whose underlying array has run out of room, under the hood the data is copied to a new location with more capacity.
+But this is not efficient.
 */
 
 //we can return nil for a slice. nil is kind of a zero value for a slice
@@ -84,7 +85,6 @@ func getMessagesWithRetriesForPlan(plan string) ([]string, error){
 func getMessageWithRetries2() [3]string{
 	return [3]string{"Message 1", "Message 2", "Message 3"}
 }
-
 
 
 func getMessageCosts(messages []string) []float64 {
@@ -108,9 +108,20 @@ The capacity of a slice, accessible by the built-in function cap, reports the ma
 to append data to a slice. If the data exceeds the capacity, the slice is reallocated.
 
 The function uses the fact that len and cap are legal when applied to the nil slice, and return 0.
+
+the len and cap are legal when applied to a nil slice and will return 0. No panic will be there.
 */
 
-//VARIADIC
+/*VARIADIC
+
+
+sprintf and printf and println all functions a variadic. A variadic function receives a variadic arguments as a slice
+
+
+func Println(a ...any) (n int, err error) {
+	return Fprintln(os.Stdout, a...)
+}
+*/
 
 func concat(strs ...string) string {
     final := ""
@@ -143,6 +154,10 @@ APPEND
 The built-in append function is used to dynamically add elements to a slice:
 
 If the underlying array is not large enough, append() will create a new underlying array and point the slice to it.
+
+func append(slice []Type, elems ...Type) []Type
+
+built-in append function is a variadic function and is used to dynamically add elements to a slice
 */
 type cost struct {
 	day   int
@@ -204,14 +219,17 @@ func printMatrix(rows, cols int){
 
 /*
 TRICKY SLICES
-The append() function changes the underlying array of its parameter AND returns a new slice. This means that using append() on anything 
+The append() function changes the underlying array of its parameter and returns a new slice. This means that using append() on anything 
 other than itself is usually a BAD idea.
 
 // dont do this!
 someSlice = append(otherSlice, element)
 */
 
-//Range
+/*
+
+GO provides syntactic sugar in the form of Range.
+*/
 func indexOfFirstBadWord(msg []string, badWords []string) int {
 	for i, word := range msg {
 		for _, badWord := range badWords {
