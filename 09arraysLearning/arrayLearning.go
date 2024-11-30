@@ -64,6 +64,10 @@ fmt.Println(cap(mySlice)) // 3
 Generally speaking, unless you're hyper-optimizing the memory usage of your program, you don't need to worry about the capacity of a slice because it will automatically grow as needed.
 */
 
+/*
+when we want to grow a slice whose underlying array has run out of room, under the hood the data is copied to a new location with more capacity.
+*/
+
 //we can return nil for a slice. nil is kind of a zero value for a slice
 func getMessagesWithRetriesForPlan(plan string) ([]string, error){
 	allMessages := getMessageWithRetries2()
