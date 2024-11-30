@@ -164,6 +164,9 @@ func printExpenseReport2(e expense) {
 func main() {
 	sendMessage(birthdayMessage{time.Date(1994, 03, 21, 0, 0, 0, 0, time.UTC), "John Doe"})
 	sendMessage(sendingReport{"First Report", 10})
+
+	println("")
+	println("------type assertion------")
 	printExpenseReport(email{
 		isSubscribed: false,
 		body:         "It is I, Arthur, son of Uther Pendragon, from the castle of Camelot. King of the Britons, defeator 
@@ -175,6 +178,7 @@ func main() {
 		body:          "I am. And this my trusty servant Patsy.",
 		toPhoneNumber: "+155555509832",
 	})
+	println("------type assertion------")
 
 	printExpenseReport2(email{
 		isSubscribed: false,
