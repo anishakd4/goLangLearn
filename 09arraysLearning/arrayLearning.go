@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+)
 
 //Arrays are fixed-size groups of variables of the same type.
 //The type [n]T is an array of n values of type T
@@ -53,15 +56,33 @@ mySlice := []string{"I", "love", "go"}
 fmt.Println(len(mySlice)) // 3
 
 CAPACITY
-The capacity of a slice is the number of elements in the underlying array, counting from the first element in the slice. It is accessed 
-using the built-in cap() function:
+The capacity of a slice reports the maximum length the slice may assume. It is accessed using the built-in cap() function:
 
 mySlice := []string{"I", "love", "go"}
 fmt.Println(cap(mySlice)) // 3
 
-Generally speaking, unless you're hyper-optimizing the memory usage of your program, you don't need to worry about the capacity of a slice 
-because it will automatically grow as needed.
+Generally speaking, unless you're hyper-optimizing the memory usage of your program, you don't need to worry about the capacity of a slice because it will automatically grow as needed.
 */
+
+//we can return nil for a slice. nil is kind of a zero value for a slice
+func getMessagesWithRetriesForPlan(plan string) ([]string, error){
+	allMessages := getMessageWithRetries2()
+
+	if plan  == "planpro" {
+		return allMessages[:], nil
+	}
+	if plan  == "planfree" {
+		return allMessages[0:2], nil
+	}
+	return nil, errors.New("unsupported plan")
+}
+
+func getMessageWithRetries2() [3]string{
+	return [3]string{"Message 1", "Message 2", "Message 3"}
+}
+
+
+
 func getMessageCosts(messages []string) []float64 {
 	costs :=  make([]float64, len(messages))
 	for i := 0; i < len(messages); i++ {
@@ -208,8 +229,10 @@ func printBadWordsIndex(msg []string, badWords []string) {
 
 func main() {
 	printMessageWithRetries("Anish", "Kumar", "Dubey")
-	
+
 	printSlices()
+
+	//getMessagesWithRetriesForPlan(plan string)
 
 	printMessageCosts([]string{"Welcome to the movies!", "Enjoy your popcorn!"})
 
