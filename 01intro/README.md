@@ -11,6 +11,6 @@ but it does beat them when compiling
 
 - VM languages means compiled languages that run top of virtual machines
 
-- Even though GO is a Natively compiled language like Rust, C, C++ its execution speed is more similar to Java, C#(How  many computations it can do per second). The primary reason for that is go runtime. There is basically a chunk of code that is included in every go program that manages memory and that tends to slow down the execution speed. It needs to be pointed out that Go program tends to use much less memory than java and C#. Because there isn't a need to for entire virtual machine 
+- Even though GO is a Natively compiled language like Rust, C, C++ but its execution speed is more similar to Java, C#(How  many computations it can do per second). The primary reason for that is go runtime. There is basically a chunk of code that is included in every go program that manages memory and that tends to slow down the execution speed. It needs to be pointed out that Go program tends to use much less memory than java and C#. Because there isn't a need to for entire virtual machine 
 
 ![go_vs_others](./go_vs_others.png)
