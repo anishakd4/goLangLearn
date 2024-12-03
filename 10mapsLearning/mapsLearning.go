@@ -9,6 +9,8 @@ import (
 Maps are similar to JavaScript objects, Python dictionaries, and Ruby hashes. Maps are a data structure that provides key->value mapping.
 The zero value of a map is nil.
 
+we can create a map using literal or by using the make() function.
+
 ages := make(map[string]int)
 ages["John"] = 37
 ages["Mary"] = 24
@@ -18,6 +20,8 @@ ages = map[string]int{
 	"John": 37,
 	"Mary": 21,
 }
+
+the len() function works on maps, it returns the total number of key/value pairs in the map.
 
 */
 type user struct {
@@ -60,6 +64,8 @@ delete(m, key)
 CHECK IF A KEY EXISTS
 elem, ok := m[key]
 
+if key is in m then ok is true else false. If key is not in the map, then element is the zero value for the map's element type.
+
 NOTE ON PASSING MAPS
 Like slices, maps are also passed by reference into functions. This means that when a 
 map is passed into a function we write, we can make changes to the original, we don't have a copy.
@@ -93,7 +99,7 @@ KEY TYPES
 
 Any type can be used as the value in a map, but keys are more restrictive.
 
-As mentioned earlier, map keys may be of any type that is comparable. The language spec defines this precisely, but in short, 
+map keys may be of any type that is comparable. The language spec defines this precisely, but in short, 
 comparable types are boolean, numeric, string, pointer, channel, and interface types, and structs or arrays that contain only 
 those types. Notably absent from the list are slices, maps, and functions; these types cannot be compared using ==, 
 and may not be used as map keys.
@@ -114,7 +120,27 @@ func printGetCounts(userIds []string){
 	fmt.Println(x)
 }
 
-//NESTED
+/*
+Maps can nest maps
+
+map[string]map[string]int
+
+This looks like 2 strings mapped to a int
+n = hits["str1"]["str2"]
+This looks to be messy because you need to check if the inner map exists for the outer key otherwise the code will panic. So this checks
+adds a lot of extra code.
+
+We can easily handle this case using a struct
+
+type com struct{
+	str1, str2 string
+}
+
+map[com]int
+
+code will panic if the we try to get a key from a nil map. 
+
+*/
 func getNameCounts(names []string) map[rune]map[string]int{
 	counts := make(map[rune]map[string]int)
 	for _, name := range names{
@@ -138,6 +164,14 @@ func printNameCounts(names []string){
 	fmt.Println(x)
 	fmt.Println("#######printNameCounts#######")
 }
+
+
+/*
+A function can mutate the values stored in a map and those changes will affect the caller. Like slices maps hold references to 
+the underlying data structure.
+
+
+*/
 
 func main() {
 	printUserMap( []string{"Eren", "Armin", "Mikasa"}, []int{14355550987, 98765550987, 18265554567})
