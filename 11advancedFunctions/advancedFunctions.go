@@ -7,6 +7,7 @@ A programming language is said to have "first-class functions" when functions in
 For example, in such a language, a function can be passed as an argument to other functions, can be returned by another function and
 can be assigned as a value to a variable.
 
+first-class functions means those functions which can be passed as arguments.
 A function that returns a function or accepts a function as input is called a Higher-Order Function.
 */
 func add(a, b int) int{
@@ -26,9 +27,9 @@ func printAggregate(a, b, c int, arithmetic func(int, int) int){
 	fmt.Println(x)
 }
 
-//CURRYING
-//Function currying is the practice of writing a function that takes a function (or functions) as input, 
-//and returns a new function.
+/*CURRYING
+Function currying is the practice of writing a function that takes a function (or functions) as input, and returns a new function.
+*/
 func multiplyCurry(x, y int) int {
 	return x * y
 }
