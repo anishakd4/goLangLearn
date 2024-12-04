@@ -77,9 +77,7 @@ func testRemoveProfanityNilCase(){
 //POINTER RECEIVERS
 /*
 A receiver type on a method can be a pointer.
-Methods with pointer receivers can modify the value to which the receiver points. Since methods often need to modify their receiver, pointer receivers 
-are more common than value receivers. However, methods with pointer receivers don't require that a pointer is used to call the method. The pointer 
-will automatically be derived from the value.
+Methods with pointer receivers can modify the value to which the receiver points. Since methods often need to modify their receiver, pointer receivers are more common than value receivers. However, methods with pointer receivers don't require that a pointer is used to call the method. The pointer will automatically be derived from the value.
 */
 type car struct {
 	color string
