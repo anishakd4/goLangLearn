@@ -25,7 +25,7 @@ Concurrency is as simple as using the go keyword when calling a function:
 go doSomething()
 
 In the example above, doSomething() will be executed concurrently with the rest of the code in the function. The go keyword
-is used to spawn a new goroutine.
+is used to spawn a new goroutine. Al we are saying using the go keyword is that this execution can happen in parallel.
 
 */
 
